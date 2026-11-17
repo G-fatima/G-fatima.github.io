@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghulam Fatima — ML Engineer</title>
+<meta name="description" content="Ghulam Fatima — Machine Learning Engineer from Lahore, building LLM, RAG and ML-powered products.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --ink:#17151c; --muted:#77737f; --line:#ececf0; --soft:#f6f5f8;
+  --accent:#7a4dff; --accent-2:#ff6fa8; --skin:#f7cdb0; --hair:#2a1b19;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+.accent{color:var(--accent);font-weight:600}
+
+/* ---------- header (morphs into a floating pill on scroll) ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:center;transition:padding .45s ease}
+.nav{width:100%;max-width:1260px;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border:1px solid transparent;border-radius:999px;transition:all .45s cubic-bezier(.2,.8,.2,1)}
+header.scrolled{padding-top:14px}
+header.scrolled .nav{max-width:760px;padding:8px 10px 8px 12px;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-color:var(--line);box-shadow:0 8px 30px rgba(20,10,40,.07)}
+.brand{display:flex;align-items:center;gap:10px}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#fff;font-weight:600;font-size:15px;transition:all .45s}
+header.scrolled .avatar{width:32px;height:32px;font-size:12px}
+.brand b{display:block;font-weight:600;color:var(--accent);font-size:15px}
+.brand small{display:block;color:var(--muted);font-size:12px;transition:all .3s;max-height:20px;overflow:hidden}
+header.scrolled .brand small{max-height:0;opacity:0}
+.links{display:flex;gap:28px;font-size:14px}
+.links a{position:relative}
+.links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1.5px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .3s}
+.links a:hover::after{transform:scaleX(1);transform-origin:left}
+.resume{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:8px 14px;border-radius:999px;transition:background .3s}
+.resume:hover{background:var(--soft)}
+.resume svg{transition:transform .3s}.resume:hover svg{transform:translateY(2px)}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:20px;padding-top:90px}
+.hello{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);border:1px solid var(--line);padding:6px 12px;border-radius:999px;margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:#2ecc71;box-shadow:0 0 0 0 rgba(46,204,113,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px rgba(46,204,113,0)}100%{box-shadow:0 0 0 0 rgba(46,204,113,0)}}
+h1{font-size:clamp(32px,4vw,50px);font-weight:400;line-height:1.18;letter-spacing:-.02em;max-width:640px}
+h1 .word{display:inline-block;opacity:0;transform:translateY(24px);filter:blur(6px);animation:wordIn .7s forwards}
+@keyframes wordIn{to{opacity:1;transform:none;filter:none}}
+.rotator{display:inline-block;color:var(--accent);font-weight:600;border-right:3px solid var(--accent);padding-right:2px;animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{border-color:transparent}}
+.cta{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:15px 24px;font-size:15px;font-weight:500;border:1px solid var(--line);transition:all .3s}
+.btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.dark:hover{background:var(--accent);border-color:var(--accent)}
+.btn:not(.dark):hover{border-color:var(--ink)}
+.btn .arr{transition:transform .3s}.btn:hover .arr{transform:translateX(5px)}
+
+/* ---------- character ---------- */
+.stage{position:relative;height:520px;display:flex;justify-content:center;align-items:center}
+.char{width:320px;height:450px;position:relative;z-index:2}
+.float{animation:float 4.2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.shadow{transform-origin:150px 432px;animation:shadow 4.2s ease-in-out infinite}
+@keyframes shadow{0%,100%{transform:scale(1);opacity:.22}50%{transform:scale(.8);opacity:.12}}
+.wave{transform-origin:100px 236px;animation:wave 2.4s ease-in-out infinite}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(-14deg)}20%,40%{transform:rotate(8deg)}}
+.blink{transform-box:fill-box;transform-origin:center;animation:blink 5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+.head{transform-origin:150px 200px;transition:transform .25s ease-out}
+.bubble{position:absolute;top:40px;left:-10px;z-index:3;background:#fff;border:1px solid var(--line);box-shadow:0 10px 30px rgba(30,10,60,.08);padding:10px 14px;border-radius:16px 16px 16px 4px;font-size:14px;opacity:0;transform:scale(.6) translateY(10px);transform-origin:bottom left;animation:pop .5s 1.4s forwards}
+@keyframes pop{to{opacity:1;transform:none}}
+.chip{position:absolute;z-index:3;font-size:12.5px;font-weight:500;padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(30,10,60,.07);animation:bob 5s ease-in-out infinite}
+.chip i{font-style:normal;margin-right:5px}
+@keyframes bob{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-12px)}}
+.orbit{position:absolute;width:390px;height:390px;border:1px dashed #e3defa;border-radius:50%;animation:spin 40s linear infinite}
+.orbit::before{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.orbit.two{width:300px;height:300px;animation-duration:26s;animation-direction:reverse}
+.orbit.two::before{background:var(--accent-2);top:auto;bottom:-5px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:-40px;position:relative;z-index:4;background:#fff}
+.stat{padding:26px 24px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:24px;font-weight:500}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* ---------- sections ---------- */
+section{padding:120px 0}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.eyebrow::before{content:"";width:36px;height:1px;background:var(--muted)}
+h2{font-size:clamp(28px,3.4vw,42px);font-weight:500;letter-spacing:-.02em;line-height:1.15}
+h2 em{font-style:normal;color:var(--accent)}
+.lead{color:var(--muted);font-size:17px;line-height:1.65;max-width:640px;margin-top:18px}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* projects */
+.project{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;padding:70px 0;border-bottom:1px solid var(--line)}
+.project:nth-child(even) .visual{order:-1}
+.project h3{font-size:clamp(26px,2.8vw,36px);font-weight:500;letter-spacing:-.02em;line-height:1.15}
+.project h3 em{font-style:normal;color:var(--accent)}
+.project ul{list-style:none;margin:20px 0 22px}
+.project li{color:var(--muted);line-height:1.6;padding:6px 0 6px 22px;position:relative;font-size:15.5px}
+.project li::before{content:"";position:absolute;left:0;top:15px;width:8px;height:8px;border-radius:2px;background:var(--accent);opacity:.75;transform:rotate(45deg)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12.5px;padding:5px 11px;border-radius:999px;background:var(--soft);color:#4b4756}
+.plink{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-weight:500;color:var(--accent)}
+.plink:hover .arr{transform:translate(3px,-3px)}.plink .arr{transition:transform .3s}
+.visual{aspect-ratio:1.15;border-radius:24px;background:linear-gradient(160deg,#f7f4ff,#fff3f8);border:1px solid var(--line);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:28px}
+
+/* chat mock */
+.chat{width:100%;max-width:380px;background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(60,30,120,.12);padding:18px;display:flex;flex-direction:column;gap:10px}
+.chat .top{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.msg{font-size:13px;line-height:1.45;padding:9px 12px;border-radius:14px;max-width:85%;opacity:0;transform:translateY(10px)}
+.msg.u{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:4px}
+.msg.a{align-self:flex-start;background:var(--soft);border-bottom-left-radius:4px}
+.in .msg{animation:msgIn .5s forwards}
+.in .msg:nth-of-type(2){animation-delay:.3s}.in .msg:nth-of-type(3){animation-delay:1.1s}.in .msg:nth-of-type(4){animation-delay:2s}.in .msg:nth-of-type(5){animation-delay:2.8s}
+@keyframes msgIn{to{opacity:1;transform:none}}
+.typing{display:inline-flex;gap:4px}.typing span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tp 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes tp{50%{transform:translateY(-4px);opacity:.4}}
+.src{font-size:11px;color:var(--accent);margin-top:4px;display:block}
+
+/* air quality mock */
+.aq{width:100%;max-width:400px;background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(60,30,120,.12);padding:20px}
+.aq .row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.aq .m{background:var(--soft);border-radius:12px;padding:10px}
+.aq .m small{font-size:11px;color:var(--muted);display:block}
+.aq .m b{font-size:20px;font-weight:600}
+.aq svg path.line{stroke-dasharray:600;stroke-dashoffset:600}
+.in .aq svg path.line{animation:draw 2.4s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.acc{margin-top:14px;display:grid;gap:8px;font-size:12px}
+.acc div{display:grid;grid-template-columns:90px 1fr 50px;align-items:center;gap:8px}
+.bar{height:8px;border-radius:9px;background:var(--soft);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width 1.6s cubic-bezier(.2,.8,.2,1) .4s}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#2ecc71;font-weight:600;float:right}
+
+/* bars mock */
+.chart{width:100%;max-width:400px;background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(60,30,120,.12);padding:20px}
+.chart h4{font-size:13px;font-weight:600;margin-bottom:16px}
+.cols{display:flex;align-items:flex-end;gap:14px;height:190px;border-bottom:1px solid var(--line);padding:0 6px}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px;font-size:11px;color:var(--muted)}
+.col i{display:block;width:100%;height:0;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,var(--accent),#b9a3ff);transition:height 1.2s cubic-bezier(.2,.8,.2,1)}
+.col:nth-child(2) i{transition-delay:.1s}.col:nth-child(3) i{transition-delay:.2s}.col:nth-child(4) i{transition-delay:.3s}.col:nth-child(5) i{transition-delay:.4s}
+.xl{display:flex;gap:14px;padding:8px 6px 0;font-size:11px;color:var(--muted)}.xl span{flex:1;text-align:center}
+.corr{margin-top:14px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between}
+.corr b{color:var(--ink)}
+
+/* experience */
+.xp{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;margin-top:50px}
+.xp-card{border:1px solid var(--line);border-radius:22px;padding:34px;position:relative;overflow:hidden}
+.xp-card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(var(--accent),var(--accent-2))}
+.xp-card .when{font-size:13px;color:var(--muted)}
+.xp-card h3{font-size:22px;font-weight:600;margin:6px 0 2px}
+.xp-card .org{color:var(--accent);font-weight:500;font-size:15px}
+.xp-card ul{margin-top:18px;list-style:none}
+.xp-card li{color:var(--muted);line-height:1.6;padding:5px 0 5px 20px;position:relative;font-size:15px}
+.xp-card li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+.edu{border-radius:22px;padding:34px;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.edu .when{font-size:13px;color:#aaa6b4}
+.edu h3{font-size:22px;font-weight:600;margin:6px 0}
+.edu p{color:#c9c5d3}
+.gpa{margin-top:26px;display:flex;align-items:center;gap:18px}
+.ring{width:84px;height:84px}
+.ring circle{fill:none;stroke-width:8}
+.ring .fg{stroke:url(#g);stroke-linecap:round;stroke-dasharray:226;stroke-dashoffset:226;transition:stroke-dashoffset 1.8s ease .3s;transform:rotate(-90deg);transform-origin:center}
+.in .ring .fg{stroke-dashoffset:41.5}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:50px}
+.sk{border:1px solid var(--line);border-radius:20px;padding:24px;transition:transform .35s,box-shadow .35s,border-color .35s}
+.sk:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(60,30,120,.08);border-color:#ddd3ff}
+.sk .ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--soft);font-size:20px;margin-bottom:16px}
+.sk h4{font-size:16px;font-weight:600;margin-bottom:12px}
+.sk .tags{gap:6px}
+
+/* marquee */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;white-space:nowrap}
+.marquee div{display:inline-flex;gap:46px;animation:mq 30s linear infinite;font-size:24px;color:#c7c3cf;font-weight:500}
+.marquee span::after{content:"✦";margin-left:46px;color:var(--accent)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* contact */
+.contact{padding:130px 0 100px}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.contact h2{font-size:clamp(46px,7vw,92px);font-weight:500;letter-spacing:-.04em;line-height:1}
+.contact .lead{margin-top:18px}
+.mail{display:inline-block;margin-top:30px;font-size:clamp(17px,2vw,22px);border-bottom:2px solid var(--accent);padding-bottom:4px;transition:color .3s;word-break:break-all}
+.mail:hover{color:var(--accent)}
+.steps{list-style:none;margin-top:34px;display:grid;gap:14px}
+.steps li{display:flex;gap:14px;align-items:flex-start;color:var(--muted);font-size:15px;line-height:1.5}
+.steps b{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--accent);font-size:13px}
+.form{position:relative;background:#fff;border:1px solid var(--line);border-radius:26px;padding:34px;box-shadow:0 30px 70px rgba(60,30,120,.10);overflow:hidden}
+.form::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.form h3{font-size:22px;font-weight:600}
+.form .sub{color:var(--muted);font-size:14px;margin:4px 0 24px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{position:relative;margin-bottom:16px}
+.field input,.field textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--soft);border:1.5px solid transparent;border-radius:14px;padding:22px 16px 9px;outline:none;transition:border-color .25s,background .25s,box-shadow .25s;resize:vertical}
+.field textarea{min-height:150px;line-height:1.5}
+.field label{position:absolute;left:17px;top:16px;font-size:15px;color:var(--muted);pointer-events:none;transition:all .2s}
+.field input:focus,.field textarea:focus{background:#fff;border-color:var(--accent);box-shadow:0 0 0 4px rgba(122,77,255,.12)}
+.field input:focus+label,.field input:not(:placeholder-shown)+label,.field textarea:focus+label,.field textarea:not(:placeholder-shown)+label{top:7px;font-size:11.5px;color:var(--accent);font-weight:500}
+.field .count{position:absolute;right:14px;bottom:10px;font-size:11px;color:var(--muted)}
+.glabel{font-size:13px;font-weight:500;margin-bottom:10px;display:block}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.pills input{position:absolute;opacity:0;pointer-events:none}
+.pills label{cursor:pointer;font-size:13px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);transition:all .2s;user-select:none}
+.pills label:hover{border-color:#cbbcff}
+.pills input:checked+label{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-1px)}
+.pills input:focus-visible+label{box-shadow:0 0 0 4px rgba(122,77,255,.2)}
+.send{width:100%;justify-content:center;border:0;cursor:pointer;font:inherit;font-size:15px;font-weight:500;border-radius:14px;padding:17px}
+.send:disabled{opacity:.7;cursor:wait}
+.spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;display:none}
+.sending .spin{display:inline-block}.sending .arr{display:none}
+.note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+.err{color:#d64545;font-size:13px;margin-top:10px;text-align:center;display:none}
+.done{position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;opacity:0;pointer-events:none;transition:opacity .4s}
+.form.ok .done{opacity:1;pointer-events:auto}
+.done svg circle{stroke-dasharray:190;stroke-dashoffset:190}.done svg path{stroke-dasharray:50;stroke-dashoffset:50}
+.form.ok .done svg circle{animation:dr .7s .1s forwards}.form.ok .done svg path{animation:dr .4s .7s forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+.done h3{margin-top:18px}.done p{color:var(--muted);margin-top:6px;max-width:300px}
+.done button{margin-top:22px;background:none;border:1px solid var(--line);border-radius:999px;padding:9px 18px;font:inherit;cursor:pointer}
+.socials{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.socials a{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:11px 18px;border-radius:999px;font-size:14px;transition:all .3s}
+.socials a:hover{border-color:var(--ink);transform:translateY(-3px)}
+footer{border-top:1px solid var(--line);padding:26px 0;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+/* cursor glow */
+.glow{position:fixed;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(122,77,255,.10),transparent 65%);transform:translate(-50%,-50%);transition:opacity .3s}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .wrap{padding:0 16px}
+  .nav{padding:14px 16px}
+  .links{display:none}
+  .hero{grid-template-columns:1fr;padding-top:90px;text-align:left;gap:0;min-height:auto;padding-bottom:40px}
+  .stage{height:350px;order:-1;margin-bottom:10px}
+  .char{width:210px;height:300px}
+  .orbit{width:260px;height:260px}.orbit.two{width:200px;height:200px}
+  .bubble{top:10px;left:0}
+  .chip{font-size:11px;padding:5px 10px}
+  .stats{grid-template-columns:1fr 1fr;margin-top:30px}
+  .stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  section{padding:80px 0}
+  .project{grid-template-columns:1fr;gap:34px;padding:50px 0}
+  .project:nth-child(even) .visual{order:0}
+  .xp{grid-template-columns:1fr;gap:18px}
+  .contact{padding:80px 0}
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .form{padding:24px 18px}
+  .row2{grid-template-columns:1fr;gap:0}
+  .glow{display:none}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal,h1 .word,.msg,.bubble{opacity:1;transform:none;filter:none}}
+</style>
+</head>
+<body>
+<div class="glow" id="glow"></div>
+
+<header id="hdr">
+  <nav class="nav">
+    <a href="#top" class="brand">
+      <span class="avatar">GF</span>
+      <span><b>Ghulam Fatima</b><small>Lahore, Pakistan</small></span>
+    </a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="resume" href="resume.pdf" target="_blank" rel="noopener">View Resume
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main id="top">
+<div class="wrap">
+  <!-- ================= HERO ================= -->
+  <div class="hero">
+    <div>
+      <span class="hello"><span class="dot"></span>Open to ML / AI roles</span>
+      <h1 id="headline">A machine learning engineer turning data and LLMs into <span class="rotator" id="rot">intelligent products</span>.</h1>
+      <div class="cta">
+        <a href="#work" class="btn dark">See my work <span class="arr">→</span></a>
+        <a href="#contact" class="btn">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="orbit"></div><div class="orbit two"></div>
+      <span class="bubble">Hi, I'm Fatima 👋</span>
+      <span class="chip" style="top:120px;right:-6px;animation-delay:-1s"><i>🐍</i>Python</span>
+      <span class="chip" style="top:270px;left:-14px;animation-delay:-2.5s"><i>🧠</i>LLMs + RAG</span>
+      <span class="chip" style="bottom:70px;right:6px;animation-delay:-3.7s"><i>📊</i>Scikit-learn</span>
+
+      <svg class="char" viewBox="0 0 300 450" aria-label="Animated illustration of Fatima waving">
+        <defs>
+          <linearGradient id="blz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3350"/><stop offset="1" stop-color="#231f31"/></linearGradient>
+          <linearGradient id="hairG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b2622"/><stop offset="1" stop-color="#1e1311"/></linearGradient>
+          <radialGradient id="cheek"><stop offset="0" stop-color="#ff8fa3" stop-opacity=".55"/><stop offset="1" stop-color="#ff8fa3" stop-opacity="0"/></radialGradient>
+        </defs>
+        <ellipse class="shadow" cx="150" cy="432" rx="70" ry="9" fill="#2a1b3d"/>
+        <g class="float">
+          <!-- back hair -->
+          <path d="M78 140 C70 58 118 38 150 38 C186 38 232 58 222 140 L232 262 C206 276 94 276 68 262 Z" fill="url(#hairG)"/>
+          <!-- legs & shoes -->
+          <rect x="120" y="326" width="24" height="70" rx="8" fill="#1d1a26"/>
+          <rect x="156" y="326" width="24" height="70" rx="8" fill="#1d1a26"/>
+          <ellipse cx="128" cy="400" rx="20" ry="9" fill="#111"/>
+          <ellipse cx="172" cy="400" rx="20" ry="9" fill="#111"/>
+          <!-- body -->
+          <rect x="139" y="196" width="22" height="26" fill="#eab394"/>
+          <path d="M96 232 Q100 212 132 210 L150 228 L168 210 Q200 212 204 232 L214 336 Q150 348 86 336 Z" fill="url(#blz)"/>
+          <path d="M132 210 L150 262 L168 210 L150 228 Z" fill="#fff"/>
+          <path d="M132 210 L143 250 L126 232 Z M168 210 L157 250 L174 232 Z" fill="#4a4266"/>
+          <circle cx="150" cy="280" r="3" fill="#7a4dff"/><circle cx="150" cy="300" r="3" fill="#7a4dff"/>
+          <!-- right arm holding laptop -->
+          <path d="M202 236 Q218 270 214 314" stroke="url(#blz)" stroke-width="24" stroke-linecap="round" fill="none"/>
+          <g transform="rotate(-8 214 300)">
+            <rect x="196" y="268" width="44" height="62" rx="6" fill="#d9d6e3"/>
+            <rect x="200" y="272" width="36" height="54" rx="4" fill="#ecebf2"/>
+            <circle cx="218" cy="299" r="6" fill="#7a4dff" opacity=".8"/>
+          </g>
+          <circle cx="212" cy="318" r="10" fill="var(--skin)"/>
+          <!-- left arm waving -->
+          <g class="wave">
+            <path d="M100 236 Q72 214 62 176" stroke="url(#blz)" stroke-width="24" stroke-linecap="round" fill="none"/>
+            <circle cx="60" cy="160" r="13" fill="var(--skin)"/>
+            <rect x="50" y="138" width="5" height="14" rx="2.5" fill="var(--skin)" transform="rotate(-12 52 145)"/>
+            <rect x="57" y="135" width="5" height="16" rx="2.5" fill="var(--skin)"/>
+            <rect x="64" y="137" width="5" height="15" rx="2.5" fill="var(--skin)" transform="rotate(10 66 144)"/>
+          </g>
+          <!-- head -->
+          <g class="head" id="head">
+            <ellipse cx="88" cy="150" rx="10" ry="13" fill="#eab394"/>
+            <ellipse cx="212" cy="150" rx="10" ry="13" fill="#eab394"/>
+            <ellipse cx="150" cy="140" rx="62" ry="68" fill="var(--skin)"/>
+            <ellipse cx="114" cy="170" rx="14" ry="9" fill="url(#cheek)"/>
+            <ellipse cx="186" cy="170" rx="14" ry="9" fill="url(#cheek)"/>
+            <!-- eyes -->
+            <g class="blink">
+              <ellipse cx="126" cy="146" rx="14" ry="17" fill="#fff"/>
+              <g class="pupil"><circle cx="126" cy="148" r="10" fill="#5a3426"/><circle cx="126" cy="148" r="5.5" fill="#160d0b"/><circle cx="122" cy="143" r="3.2" fill="#fff"/></g>
+            </g>
+            <g class="blink">
+              <ellipse cx="174" cy="146" rx="14" ry="17" fill="#fff"/>
+              <g class="pupil"><circle cx="174" cy="148" r="10" fill="#5a3426"/><circle cx="174" cy="148" r="5.5" fill="#160d0b"/><circle cx="170" cy="143" r="3.2" fill="#fff"/></g>
+            </g>
+            <path d="M110 128 Q122 121 138 126 M162 126 Q178 121 190 128" stroke="#2a1b19" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+            <path d="M148 160 Q150 166 154 163" stroke="#d99a7b" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+            <path d="M137 179 Q150 192 163 179" stroke="#9c4a3f" stroke-width="3" stroke-linecap="round" fill="#c4615a"/>
+            <!-- bangs -->
+            <path d="M86 132 C84 70 126 50 158 54 C200 58 220 92 214 134 C204 108 184 94 162 86 C150 104 122 120 86 132 Z" fill="url(#hairG)"/>
+            <path d="M162 86 C170 100 178 110 186 116" stroke="#4a302b" stroke-width="2" fill="none" opacity=".6"/>
+            <circle cx="198" cy="88" r="6" fill="#ff6fa8"/><circle cx="198" cy="88" r="2.5" fill="#fff" opacity=".7"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="stats reveal">
+    <div class="stat"><b data-count="97.88" data-suffix="%">0%</b><span>Best model accuracy (XGBoost)</span></div>
+    <div class="stat"><b>LLMs + RAG</b><span>Current focus</span></div>
+    <div class="stat"><b data-count="3" data-suffix="+ projects">0</b><span>ML, GenAI &amp; IoT builds</span></div>
+    <div class="stat"><b>BS CE '26</b><span>COMSATS University, Lahore</span></div>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow reveal">About me</div>
+    <h2 class="reveal d1">Computer engineer by degree,<br><em>ML builder</em> by choice.</h2>
+    <p class="lead reveal d2">I'm a recent Computer Engineering graduate from Lahore with a strong foundation in Python, data analysis and machine learning. I enjoy taking theory off the page and into working products — from classic ML models on sensor data to LLM-powered assistants that use retrieval to answer from your own documents.</p>
+
+    <div class="xp">
+      <div class="edu reveal">
+        <span class="when">2022 — 2026</span>
+        <h3>BS Computer Engineering</h3>
+        <p>COMSATS University, Lahore</p>
+        <div class="gpa">
+          <svg class="ring" viewBox="0 0 84 84"><defs><linearGradient id="g"><stop offset="0" stop-color="#7a4dff"/><stop offset="1" stop-color="#ff6fa8"/></linearGradient></defs>
+            <circle cx="42" cy="42" r="36" stroke="#3a3545"/><circle class="fg" cx="42" cy="42" r="36"/></svg>
+          <div><b style="font-size:26px">3.27</b><span style="color:#aaa6b4"> / 4.00</span><br><span style="color:#aaa6b4;font-size:13px">CGPA</span></div>
+        </div>
+      </div>
+      <div class="xp-card reveal d1">
+        <span class="when">Sep 2026 — Nov 2026</span>
+        <h3>AI/ML Trainee</h3>
+        <div class="org">NetSol Technologies — NIAI / NAVTTC Program</div>
+        <ul>
+          <li>Building foundations in AI, Machine Learning and Deep Learning.</li>
+          <li>Using Python, NumPy, Pandas and Scikit-learn for data processing and ML tasks.</li>
+          <li>Hands-on labs on model development, training, testing and evaluation.</li>
+          <li>Learning neural networks, LLMs and Retrieval-Augmented Generation (RAG).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div>
+  <span>Machine Learning</span><span>LLMs</span><span>RAG</span><span>Prompt Engineering</span><span>Deep Learning</span><span>Data Analysis</span><span>Streamlit</span>
+  <span>Machine Learning</span><span>LLMs</span><span>RAG</span><span>Prompt Engineering</span><span>Deep Learning</span><span>Data Analysis</span><span>Streamlit</span>
+</div></div>
+
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow reveal">Selected work</div>
+    <h2 class="reveal d1">Things I've <em>built</em>.</h2>
+
+    <div class="projects">
+      <article class="project">
+        <div class="reveal">
+          <div class="eyebrow">Project — 01</div>
+          <h3>AI Study Assistant, <em>a RAG-powered</em> tutor for your own notes.</h3>
+          <ul>
+            <li>Q&amp;A, summaries, quizzes and study plans built with Python &amp; Streamlit.</li>
+            <li>LLMs via Groq API with prompt engineering, temperature tuning and token management.</li>
+            <li>Lightweight RAG: PDF chunking + BM25 retrieval to answer from uploaded material.</li>
+            <li>Vision model reads diagrams and graphs; Tavily web search adds outside context.</li>
+            <li>Structured JSON outputs, validation and grounding to reduce hallucinations.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">Groq API</span><span class="tag">BM25</span><span class="tag">Tavily</span></div>
+          <a class="plink" href="https://aaai-study-assistant-zcsaj.streamlit.app/" target="_blank" rel="noopener">Try the live app <span class="arr">↗</span></a>
+        </div>
+        <div class="visual reveal d2">
+          <div class="chat">
+            <div class="top"><span class="dot"></span>Study Assistant</div>
+            <div class="msg u">Explain backpropagation from my lecture PDF 📄</div>
+            <div class="msg a">Backpropagation computes the gradient of the loss with respect to each weight using the chain rule, layer by layer…<span class="src">📎 Lecture_05.pdf · page 12</span></div>
+            <div class="msg u">Make me a 3-question quiz on it</div>
+            <div class="msg a"><span class="typing"><span></span><span></span><span></span></span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="reveal">
+          <div class="eyebrow">Project — 02 · Final Year Project</div>
+          <h3>IoT classroom <em>air-quality</em> monitoring with ML forecasting.</h3>
+          <ul>
+            <li>ESP32 multi-sensor node (MH-Z19B, MQ-7, CCS811, PMS5003, DHT22) streaming in real time.</li>
+            <li>Random Forest and XGBoost classifiers reaching <b>96.88%</b> and <b>97.88%</b> accuracy.</li>
+            <li>LSTM model forecasting air quality one hour ahead.</li>
+            <li>Firebase Realtime Database + React.js dashboard with automated email alerts.</li>
+          </ul>
+          <div class="tags"><span class="tag">ESP32</span><span class="tag">Firebase</span><span class="tag">Random Forest</span><span class="tag">XGBoost</span><span class="tag">LSTM</span><span class="tag">React.js</span></div>
+        </div>
+        <div class="visual reveal d2">
+          <div class="aq">
+            <div style="font-size:13px;font-weight:600;margin-bottom:12px">Room 204 · Air Quality <span class="live"><span class="dot"></span>LIVE</span></div>
+            <div class="row">
+              <div class="m"><small>CO₂ ppm</small><b id="co2">612</b></div>
+              <div class="m"><small>PM2.5</small><b id="pm">18</b></div>
+              <div class="m"><small>Temp °C</small><b id="tmp">24.6</b></div>
+            </div>
+            <svg viewBox="0 0 360 110" width="100%">
+              <path d="M0 100 H360" stroke="#eee"/>
+              <path class="line" d="M0 80 C30 70 50 76 80 60 S130 40 160 52 S210 70 240 44 S300 28 330 36 L360 30" stroke="#7a4dff" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path class="line" d="M240 44 S300 28 330 36 L360 30" stroke="#ff6fa8" stroke-width="3" stroke-dasharray="4 6" fill="none" opacity=".9" style="animation-delay:1s"/>
+              <text x="300" y="20" font-size="10" fill="#ff6fa8" font-family="Outfit">LSTM +1h</text>
+            </svg>
+            <div class="acc">
+              <div><span>Random Forest</span><span class="bar"><i data-w="96.88"></i></span><b>96.88%</b></div>
+              <div><span>XGBoost</span><span class="bar"><i data-w="97.88"></i></span><b>97.88%</b></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="reveal">
+          <div class="eyebrow">Project — 03</div>
+          <h3>Student performance analysis — <em>what actually</em> moves the grades.</h3>
+          <ul>
+            <li>Explored how marks relate to attendance and weekly study hours.</li>
+            <li>Pandas for cleaning, merging and aggregation; NumPy for statistics and normalization.</li>
+            <li>Surfaced clear patterns between study habits, attendance and results.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">EDA</span></div>
+        </div>
+        <div class="visual reveal d2">
+          <div class="chart">
+            <h4>Avg. marks by weekly study hours</h4>
+            <div class="cols">
+              <div class="col"><span>52</span><i data-h="52"></i></div>
+              <div class="col"><span>61</span><i data-h="61"></i></div>
+              <div class="col"><span>70</span><i data-h="70"></i></div>
+              <div class="col"><span>78</span><i data-h="78"></i></div>
+              <div class="col"><span>86</span><i data-h="86"></i></div>
+            </div>
+            <div class="xl"><span>0–2h</span><span>3–5h</span><span>6–8h</span><span>9–11h</span><span>12h+</span></div>
+            <div class="corr"><span>Illustrative chart</span><span>Trend: <b>more hours → higher marks</b></span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" style="padding-top:40px">
+  <div class="wrap">
+    <div class="eyebrow reveal">Toolkit</div>
+    <h2 class="reveal d1">Skills I <em>work with</em>.</h2>
+    <div class="skills">
+      <div class="sk reveal"><div class="ico">💻</div><h4>Programming</h4><div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">SQL</span></div></div>
+      <div class="sk reveal d1"><div class="ico">🤖</div><h4>AI &amp; Machine Learning</h4><div class="tags"><span class="tag">Supervised Learning</span><span class="tag">Feature Engineering</span><span class="tag">Model Training</span><span class="tag">Model Evaluation</span><span class="tag">Neural Networks</span><span class="tag">Deep Learning</span></div></div>
+      <div class="sk reveal d2"><div class="ico">✨</div><h4>LLMs &amp; Generative AI</h4><div class="tags"><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">Prompt Engineering</span><span class="tag">LLM Chatbots</span></div></div>
+      <div class="sk reveal"><div class="ico">📚</div><h4>Libraries &amp; Frameworks</h4><div class="tags"><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">Matplotlib</span><span class="tag">TensorFlow</span></div></div>
+      <div class="sk reveal d1"><div class="ico">🛠️</div><h4>Tools &amp; Platforms</h4><div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Google Colab</span><span class="tag">VS Code</span><span class="tag">Streamlit</span><span class="tag">Firebase</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+   <div>
+    <div class="eyebrow reveal">Contact</div>
+    <h2 class="reveal d1">Let's <em style="color:var(--accent)">talk</em>.</h2>
+    <p class="lead reveal d2">Have a project, an idea or a question? Tell me about it — the message comes straight to my inbox and I usually reply within 24 hours.</p>
+    <ul class="steps reveal d2">
+      <li><b>1</b>Describe your project or question in the form.</li>
+      <li><b>2</b>I review it and reply to your email.</li>
+      <li><b>3</b>We plan the next steps together.</li>
+    </ul>
+    <a class="mail reveal d3" href="mailto:ghulamfatimaeng1@gmail.com">ghulamfatimaeng1@gmail.com</a>
+    <div class="socials reveal d3">
+      <a href="https://www.linkedin.com/in/ghulam-fatima-027730241/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.1 21 14.3V21h-4v-5.9c0-1.4 0-3.2-1.95-3.2S12.8 13.4 12.8 15V21H9z"/></svg>LinkedIn</a>
+      <a href="https://github.com/G-fatima" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">📄 Resume</a>
+    </div>
+   </div>
+
+   <form class="form reveal d1" id="contactForm" action="https://formsubmit.co/ghulamfatimaeng1@gmail.com" method="POST" novalidate>
+     <h3>Start a project</h3>
+     <p class="sub">Fill this in and it lands directly in my inbox.</p>
+     <input type="hidden" name="_subject" value="New project inquiry from your portfolio">
+     <input type="hidden" name="_template" value="table">
+     <input type="hidden" name="_captcha" value="false">
+     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+     <div class="row2">
+       <div class="field"><input id="f-name" name="name" placeholder=" " required autocomplete="name"><label for="f-name">Your name *</label></div>
+       <div class="field"><input id="f-email" name="email" type="email" placeholder=" " required autocomplete="email"><label for="f-email">Email address *</label></div>
+     </div>
+     <div class="field"><input id="f-co" name="company" placeholder=" " autocomplete="organization"><label for="f-co">Company / organization (optional)</label></div>
+
+     <span class="glabel">What do you need help with?</span>
+     <div class="pills">
+       <input type="radio" name="project_type" id="t1" value="ML model" checked><label for="t1">🤖 ML model</label>
+       <input type="radio" name="project_type" id="t2" value="LLM / RAG chatbot"><label for="t2">✨ LLM / RAG chatbot</label>
+       <input type="radio" name="project_type" id="t3" value="Data analysis"><label for="t3">📊 Data analysis</label>
+       <input type="radio" name="project_type" id="t4" value="IoT + ML"><label for="t4">📡 IoT + ML</label>
+       <input type="radio" name="project_type" id="t5" value="Job / internship"><label for="t5">💼 Job / internship</label>
+       <input type="radio" name="project_type" id="t6" value="Other"><label for="t6">Other</label>
+     </div>
+
+     <div class="field"><textarea id="f-msg" name="message" placeholder=" " maxlength="2000" required></textarea><label for="f-msg">Describe your project or query *</label><span class="count" id="cnt">0 / 2000</span></div>
+
+     <button class="btn dark send" type="submit" id="sendBtn"><span class="spin"></span><span class="lbl">Send message</span> <span class="arr">→</span></button>
+     <p class="err" id="err"></p>
+     <p class="note">🔒 Your details are only used to reply to you.</p>
+
+     <div class="done" aria-live="polite">
+       <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="30" stroke="url(#g)" stroke-width="4"/><path d="M24 37l8 8 16-17" stroke="#7a4dff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       <h3>Message sent!</h3>
+       <p>Thanks for reaching out — I'll get back to you at your email soon.</p>
+       <button type="button" id="again">Send another</button>
+     </div>
+   </form>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Ghulam Fatima</span><span>Made in Lahore with Python-powered curiosity ✦</span></div></footer>
+
+<script>
+// split headline into animated words (keeps the rotator span intact)
+(function(){
+  const h=document.getElementById('headline');let i=0;
+  [...h.childNodes].forEach(n=>{
+    if(n.nodeType===3){
+      const frag=document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(t=>{
+        if(!t.trim()){frag.append(t);return}
+        const s=document.createElement('span');s.className='word';s.textContent=t;s.style.animationDelay=(i++*0.06)+'s';frag.append(s);
+      });
+      h.replaceChild(frag,n);
+    }else{const w=document.createElement('span');w.className='word';w.style.animationDelay=(i++*0.06)+'s';h.replaceChild(w,n);w.append(n);}
+  });
+})();
+
+// typewriter rotator
+(function(){
+  const el=document.getElementById('rot');
+  const words=['intelligent products','RAG assistants','predictive models','real-world solutions'];
+  let w=0,c=words[0].length,del=false;
+  setTimeout(function tick(){
+    const word=words[w];
+    if(!del){c++;if(c>word.length){del=true;return setTimeout(tick,1800)}}
+    else{c--;if(c===0){del=false;w=(w+1)%words.length}}
+    el.textContent=words[w].slice(0,c)||'​';
+    setTimeout(tick,del?40:75);
+  },2600);
+})();
+
+// header pill on scroll
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// character: eyes + head follow the cursor
+const pupils=document.querySelectorAll('.pupil'),head=document.getElementById('head'),glow=document.getElementById('glow');
+addEventListener('mousemove',e=>{
+  glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';
+  const r=head.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+  const dx=e.clientX-cx,dy=e.clientY-cy,d=Math.hypot(dx,dy)||1,m=Math.min(4.5,d/40);
+  pupils.forEach(p=>p.setAttribute('transform',`translate(${dx/d*m} ${dy/d*m})`));
+  head.style.transform=`rotate(${Math.max(-7,Math.min(7,dx/60))}deg)`;
+},{passive:true});
+
+// scroll reveal + counters + bars
+function countUp(el){
+  const to=parseFloat(el.dataset.count),dec=(el.dataset.count.split('.')[1]||'').length,suf=el.dataset.suffix||'';
+  const t0=performance.now();
+  (function f(t){const p=Math.min(1,(t-t0)/1600),e=1-Math.pow(1-p,3);el.textContent=(to*e).toFixed(dec)+suf;if(p<1)requestAnimationFrame(f)})(t0);
+}
+const io=new IntersectionObserver(es=>es.forEach(en=>{
+  if(!en.isIntersecting)return;
+  const el=en.target;el.classList.add('in');
+  el.querySelectorAll('[data-count]').forEach(countUp);
+  el.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%');
+  el.querySelectorAll('.col i').forEach(b=>b.style.height=b.dataset.h+'%');
+  io.unobserve(el);
+}),{threshold:.2});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// contact form: sends straight to Fatima's inbox via FormSubmit (no backend needed)
+(function(){
+  const f=document.getElementById('contactForm'),btn=document.getElementById('sendBtn'),err=document.getElementById('err'),msg=document.getElementById('f-msg'),cnt=document.getElementById('cnt');
+  msg.addEventListener('input',()=>cnt.textContent=msg.value.length+' / 2000');
+  const showErr=t=>{err.textContent=t;err.style.display='block'};
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();err.style.display='none';
+    const nm=document.getElementById('f-name'),em=document.getElementById('f-email');
+    if(!nm.value.trim())return showErr('Please enter your name.'),nm.focus();
+    if(!/^\S+@\S+\.\S+$/.test(em.value))return showErr('Please enter a valid email address.'),em.focus();
+    if(msg.value.trim().length<10)return showErr('Please describe your project in a bit more detail.'),msg.focus();
+    btn.disabled=true;btn.classList.add('sending');btn.querySelector('.lbl').textContent='Sending…';
+    try{
+      const r=await fetch(f.action.replace('formsubmit.co/','formsubmit.co/ajax/'),{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)});
+      const j=await r.json().catch(()=>({}));
+      if(!r.ok||j.success==='false'||j.success===false)throw new Error(j.message||'failed');
+      f.classList.add('ok');f.reset();cnt.textContent='0 / 2000';
+    }catch(x){showErr('Could not send right now — please email me directly at ghulamfatimaeng1@gmail.com.')}
+    finally{btn.disabled=false;btn.classList.remove('sending');btn.querySelector('.lbl').textContent='Send message'}
+  });
+  document.getElementById('again').onclick=()=>f.classList.remove('ok');
+})();
+
+// fake live sensor values
+setInterval(()=>{
+  const j=(v,a)=>v+(Math.random()-.5)*a;
+  co2.textContent=Math.round(j(612,40));pm.textContent=Math.round(j(18,4));tmp.textContent=j(24.6,.6).toFixed(1);
+},1600);
+</script>
+</body>
+</html>
